@@ -6,19 +6,12 @@ class Dashboard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black87,
+      backgroundColor: Colors.white,
       appBar: AppBar(
         title: Text('Dashboard'.toUpperCase()),
         backgroundColor: Colors.blue,
       ),
-      body: Center(
-        child: IconButton(
-            icon: Icon(
-                Icons.add_card_sharp),
-
-            onPressed: () {},
-            iconSize: 50.0, color: Colors.amberAccent),
-      ),
+      body: Image(image: AssetImage("vollyball.png"),)
     );
   }
 }
