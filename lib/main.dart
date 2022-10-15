@@ -1,3 +1,4 @@
+import 'package:first_fluter_app/screens/home.dart';
 import 'screens/dashboard.dart';
 import 'package:flutter/material.dart';
 
@@ -12,7 +13,7 @@ class MyApp extends StatelessWidget {
       title: 'My Flutter App',
       themeMode: ThemeMode.system,
       debugShowCheckedModeBanner: false,
-      home:Dashboard()
+      home:Home()
     );
   }
 }
