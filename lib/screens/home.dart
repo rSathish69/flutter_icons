@@ -1,46 +1,86 @@
 import 'package:flutter/material.dart';
 
 class Home extends StatelessWidget {
-  const Home({Key? key}) : super(key: key);
+  Home({Key? key}) : super(key: key);
+
+  List<String> products = ["Bed", "Chair", "Sofa"];
+  List<String> productDetails = [
+    "king size bed",
+    "wooden chair",
+    "king size sofa"
+  ];
+  List<int> price = [300, 200, 150];
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child:
-        Scaffold(
+    return Scaffold(
       appBar: AppBar(
-        leading: IconButton(icon: Icon(Icons.menu), onPressed: () {},),
-        title: Text("Home"),
-        actions: [
-          IconButton(icon: Icon(Icons.add_shopping_cart), onPressed: () {},),
-          IconButton(icon: Icon(Icons.search), onPressed: () {},),
-          IconButton(icon: Icon(Icons.login), onPressed: () {},),
-        ],
-        elevation: 40.0,
-        titleSpacing: 40.0,
-        backgroundColor: Colors.blue,
-        shape: OutlineInputBorder(borderRadius: BorderRadius.circular(20.0)
+        title: Text("Navigation Drawer"),
+      ),
+      drawer: Drawer(
+        child: ListView(
+          children: [
+            UserAccountsDrawerHeader(
+              accountEmail: Text("rsathishrajasekar@gmail.com"),
+              accountName: Text("SATHISH"),
+              currentAccountPicture: CircleAvatar(foregroundImage: AssetImage("PROFILE.jpeg")),
+              otherAccountsPictures: [
+                CircleAvatar(foregroundImage: AssetImage("google.jpg")),
+                CircleAvatar(foregroundImage: AssetImage("linkdin.webp")),
+              ],
+            ),
+            ListTile(
+              leading: Icon(Icons.home),
+              title: Text("Home"),
+              onTap: () {},
+            ),
+            ListTile(
+              leading: Icon(Icons.shopping_cart),
+              title: Text("shop"),
+              onTap: () {},
+            ),
+            ListTile(
+              leading: Icon(Icons.favorite),
+              title: Text("favorites"),
+              onTap: () {},
+            ),
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Text("Labels"),
+            ),
+            ListTile(
+              leading: Icon(Icons.label),
+              title: Text("red"),
+              onTap: () {},
+            ),
+            ListTile(
+              leading: Icon(Icons.label),
+              title: Text("green"),
+              onTap: () {},
+            ),
+            ListTile(
+              leading: Icon(Icons.label),
+              title: Text("yellow"),
+              onTap: () {},
+            ),
+          ],
         ),
       ),
-      body: Center(
-        child: ElevatedButton.icon(
-          icon: Icon(Icons.ads_click_rounded),
-          label: Text("Namma Kadai"),
-          // child: Text("Let's Begin"),
-          onPressed: () {},
-          style: ElevatedButton.styleFrom(
-              padding: EdgeInsets.all(20.0),
-              fixedSize: Size(300, 80),
-              textStyle: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
-              primary: Colors.amber,
-              onPrimary: Colors.black87,
-              elevation: 15,
-              side: BorderSide(color: Colors.black87),
-              // alignment: Alignment.topLeft),
-              shape: StadiumBorder()),
+      body: Container(
+        child: ListView.builder(
+          itemCount: 3,
+          itemBuilder: (context, index) {
+            return ListTile(
+              leading: CircleAvatar(
+                child: Text(products[index][0]),
+              ),
+              title: Text(products[index]),
+              subtitle: Text(productDetails[index]),
+              trailing: Text(price[index].toString()),
+            );
+          },
         ),
       ),
-    ),
     );
   }
 }
